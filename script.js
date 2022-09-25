@@ -38,7 +38,6 @@ saludar("Fabian")
 alert( "Ingrese que producto quiere comprar")
  
 
-
 let nombreProductoA = "taza"
 let precioProductoA = 100
 let stockProductoA = 30
