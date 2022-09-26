@@ -51,7 +51,7 @@ prompt(nombreProductoA + ":" + "$" + precioProductoA + " El stock es:" + stockPr
  alert( "Acepte si quiere comprar: " + nombreProductoA + " y " + nombreProductoB)
 
  let cantidadProductoA = prompt( "ingrese que cantidad de " + nombreProductoA + " desea comprar:")
-let  cantidadProductoB = prompt ("ingrese que cantidad de " + nombreProductoB + " desea comprar:")
+let cantidadProductoB = prompt ("ingrese que cantidad de " + nombreProductoB + " desea comprar:")
 
 let precioTotalA = cantidadProductoA * precioProductoA
 let precioTotalB = cantidadProductoB * precioProductoB
@@ -66,8 +66,8 @@ alert ( "El precio total es : " + precioTotal)
 console.log("Ahora el stock de: " + nombreProductoA + " es: " + stockProductoA)
 console.log("Ahora el stock de: " + nombreProductoB + " es: " + stockProductoB)
 
-alert("Su compra se a realizado con exito")
 
+alert("Su compra se a realizado con exito")
 
 console.log(precioTotal)
 
