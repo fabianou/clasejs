@@ -30,36 +30,104 @@ let num3 = num1 - num2
 
 console.log(num3)*/
 
-let mensajeSaludar = "Bienvenido"
-
-saludar("Fabian")
 
 
-alert( "Ingrese que producto quiere comprar")
- 
 
 let nombreProductoA = "taza"
 let precioProductoA = 100
 let stockProductoA = 30
 
+
 let nombreProductoB = "plato"
 let precioProductoB = 200 
-let stockProductoB = 30 
+let stockProductoB = 30
 
-prompt(nombreProductoA + ":" + "$" + precioProductoA + " El stock es:" + stockProductoA + "  /  " + nombreProductoB + ":" + "$" + precioProductoB + " El stock es:" + stockProductoB)
 
- alert( "Acepte si quiere comprar: " + nombreProductoA + " y " + nombreProductoB)
+let nombreProductoC = "maceta"
+let precioProductoC = 300
+let stockProductoC =  50
+
+
+let nombreProductoD = "buho"
+let precioProductoD = 150
+let stockProductoD = 60
+
+
+let nombreProductoE = "florero"
+let precioProductoE = 500
+let stockProductoE = 15
+
+let precioTotal = 0
+
+alert ( "Estos son nuestros productos  taza\n - plato\n - maceta\n - buho\n - florero")
+  
+let cantidadCompra = prompt ( "que cantidad de productos distintos quiere comprar")
+
+for( let i = 0; i < cantidadCompra; i = i + 1){
+
+let productoCompra = prompt (" Ingrese que producto quiere comprar : \n - taza\n - plato\n - maceta\n - buho\n - florero\n - ESC ")
+
+
+if(productoCompra.toLowerCase() == " taza"){
+    let cantidadProductoTaza = prompt ("ingrese que cantidad de" + nombreProductoA + "desea comprar:")  
+    if(cantidadProductoTaza <= stockProductoA){
+     precioTotal = cantidadProductoTaza * precioProductoA
+}
+else{
+        alert ( "el precio total es" + precioTotal)
+    }
+
+}
+else if (productoCompra == " plato"){
+    let cantidadProductoPlato = prompt (" ingrese que cantidad de" + nombreProductoB + "desea comprar :")
+         precioTotal = cantidadProductoPlato * precioProductoB
+    
+}
+
+else if(productoCompra == "maceta"){
+    let cantidadProductoMaceta = prompt("ingrese que cantidad de" + nombreProductoC + "desea comprar:")
+        precioTotal = cantidadProductoMaceta * precioProductoC
+    
+}
+
+else {
+    alert( "No tenemos ese producto a la venta")
+
+}
+
+
+alert (" El precio total es :" + precioTotal)
+
+}
+
+
+/*prompt( nombreProductoA + ":" + "$" + precioProductoA + " El stock es:" + stockProductoA + "  /  " + nombreProductoB + ":" + "$" + precioProductoB + " El stock es:" + stockProductoB + " / "
+ + nombreProductoC + ":" + "$" + precioProductoC + " El stock es:" + stockProductoC +" / "+ 
+ nombreProductoD + ":" + "$" + precioProductoD + "El stock es :" + stockProductoD + " / " + nombreProductoE + ":" + "$" + precioProductoE + "El stock es :" + stockProductoE)
+
+                                                                        
+
+ alert( "Acepte si quiere comprar: " + nombreProductoA + " / " + nombreProductoB + " / " + nombreProductoC + " / " + nombreProductoD + " / " + nombreProductoE )
 
  let cantidadProductoA = prompt( "ingrese que cantidad de " + nombreProductoA + " desea comprar:")
 let cantidadProductoB = prompt ("ingrese que cantidad de " + nombreProductoB + " desea comprar:")
+let cantidadProductoC = prompt ("ingrese que cantidad de " + nombreProductoC + " desea comprar")
+let cantidadProductoD = prompt ("ingrese que cantidad de" + nombreProductoD + " desea comprar")
+let cantidadProductoE = prompt ("ingrese que cantidad de" + nombreProductoE + " desea comprar") 
+
 
 let precioTotalA = cantidadProductoA * precioProductoA
 let precioTotalB = cantidadProductoB * precioProductoB
+let precioTotalC = cantidadProductoC * precioProductoC
+let precioTotalD = cantidadProductoD * precioProductoD
+let precioTotalE = cantidadProductoE * precioProductoE
+
 
 let precioTotal = precioTotalA + precioTotalB 
 
 stockProductoA = stockProductoA - cantidadProductoA
 stockProductoB = stockProductoB - cantidadProductoB
+stockProductoC = stockProductoC - cantidadProductoC 
 
 alert ( "El precio total es : " + precioTotal)
 
@@ -69,11 +137,9 @@ console.log("Ahora el stock de: " + nombreProductoB + " es: " + stockProductoB)
 
 alert("Su compra se a realizado con exito")
 
-console.log(precioTotal)
+console.log(precioTotal)*/
 
-function saludar(nombre) {
-    alert(mensajeSaludar + " " + nombre)
-}
+
 
 
 
