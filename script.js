@@ -59,46 +59,64 @@ let stockProductoE = 15
 
 let precioTotal = 0
 
-alert ( "Estos son nuestros productos  taza\n - plato\n - maceta\n - buho\n - florero")
+alert ( "Estos son nuestros productos: \n - taza\n - plato\n - maceta\n - buho\n - florero")
   
 let cantidadCompra = prompt ( "que cantidad de productos distintos quiere comprar")
 
 for( let i = 0; i < cantidadCompra; i = i + 1){
 
-let productoCompra = prompt (" Ingrese que producto quiere comprar : \n - taza\n - plato\n - maceta\n - buho\n - florero\n - ESC ")
+    let productoCompra = prompt (" Ingrese que producto quiere comprar : \n - taza\n - plato\n - maceta\n - buho\n - florero\n - ESC ")
 
 
-if(productoCompra.toLowerCase() == " taza"){
-    let cantidadProductoTaza = prompt ("ingrese que cantidad de" + nombreProductoA + "desea comprar:")  
-    if(cantidadProductoTaza <= stockProductoA){
-     precioTotal = cantidadProductoTaza * precioProductoA
-}
-else{
-        alert ( "el precio total es" + precioTotal)
-    }
+    if(productoCompra.toLowerCase() =="taza"){
+        let cantidadProductoTaza = prompt ("ingrese que cantidad de " + nombreProductoA + " desea comprar:")  
+        precioTotal = cantidadProductoTaza * precioProductoA
+        
+        if (validarStock(cantidadProductoTaza, stockProductoA)){
+            precioTotal = cantidadProductoTaza * precioProductoA
+            stockProductoA = stockProductoA - cantidadProductoTaza
+        } else {
+            alert ( "No hay stock suficiente del producto")
+        }
+        console.log(stockProductoA)
 
-}
-else if (productoCompra == " plato"){
-    let cantidadProductoPlato = prompt (" ingrese que cantidad de" + nombreProductoB + "desea comprar :")
-         precioTotal = cantidadProductoPlato * precioProductoB
-    
-}
+    } else if (productoCompra.toLowerCase() == "plato"){
+        let cantidadProductoPlato = prompt (" ingrese que cantidad de " + nombreProductoB + " desea comprar:")
+        precioTotal = cantidadProductoPlato * precioProductoB
+        
+        console.log(stockProductoB)
 
-else if(productoCompra == "maceta"){
-    let cantidadProductoMaceta = prompt("ingrese que cantidad de" + nombreProductoC + "desea comprar:")
+    } else if(productoCompra == "maceta"){
+        let cantidadProductoMaceta = prompt("ingrese que cantidad de " + nombreProductoC + " desea comprar:")
         precioTotal = cantidadProductoMaceta * precioProductoC
+
+        console.log(stockProductoC)
+    
+    } else if(productoCompra == "buho"){
+        let cantidadProductoBuho = prompt(" ingrese que cantidad de " + nombreProductoD + " desea comprar:")
+        precioTotal = cantidadProductoBuho * precioProductoD
+
+        console.log(stockProductoD)
+
+
+    } else if(productoCompra == "florero"){
+        let cantidadProductoFlorero = prompt(" ingrese que cantidad de " + nombreProductoE + " desea comprar:")
+        precioTotal = cantidadProductoFlorero * precioProductoD 
+    }  
+
+        console.log(stockProductoE)
     
 }
 
-else {
-    alert( "No tenemos ese producto a la venta")
+    alert ("El precio total es: " + "$" + precioTotal + " Gracias por su compra")
 
-}
-
-
-alert (" El precio total es :" + precioTotal)
-
-}
+function validarStock(cantidadProducto, stockProducto) {
+    if(cantidadProducto <= stockProducto) {
+        return true
+    }
+        
+    return false
+} 
 
 
 /*prompt( nombreProductoA + ":" + "$" + precioProductoA + " El stock es:" + stockProductoA + "  /  " + nombreProductoB + ":" + "$" + precioProductoB + " El stock es:" + stockProductoB + " / "
