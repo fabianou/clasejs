@@ -1,0 +1,70 @@
+body {
+    background-color: #9f9687;
+    font-size: medium;
+    font-family: 'Courier New', Courier, monospace; }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 60px 0; }
+    ul li {
+      display: inline-block; }
+      ul li a {
+        text-decoration: none;
+        font-size: 35px;
+        color: antiquewhite;
+        padding: 30px; }
+        ul li a:hover {
+          color: black; }
+  
+  .boton, .boton--aceptar, .boton--cancelar {
+    width: 200px;
+    height: 30px;
+    background-color: black;
+    text-align: center;
+    color: aqua;
+    border-radius: 20px;
+    border: 1px solid black; }
+  
+  .boton--aceptar {
+    background-color: green;
+    color: darkorange; }
+  
+  .boton--cancelar {
+    background-color: red;
+    color: darkorange; }
+  
+  .grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; }
+  
+  @media (min-width: 768px) {
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 50%);
+      grid-template-rows: 400px;
+      justify-items: center; }
+      .grid div {
+        margin: 12px; } }
+  
+  .card {
+    width: 600px;
+    height: 1000px; }
+  
+  .card__images {
+    width: 250px;
+    height: 250px;
+    transition: 0.5 s;
+    border-radius: 20px; }
+    .card__images:hover {
+      transform: scale(1.2); }
+  
+  .card__parrafo {
+    color: #685959;
+    font-size: 18px;
+    font-weight: bold; }
+  
+ 

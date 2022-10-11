@@ -33,75 +33,82 @@ console.log(num3)*/
 
 
 
-let nombreProductoA = "taza"
+let nombreProductoA = "Buho"
 let precioProductoA = 100
 let stockProductoA = 30
 
 
-let nombreProductoB = "plato"
+let nombreProductoB = "Cuenco"
 let precioProductoB = 200 
 let stockProductoB = 30
 
 
-let nombreProductoC = "maceta"
+let nombreProductoC = "Florero"
 let precioProductoC = 300
 let stockProductoC =  50
 
 
-let nombreProductoD = "buho"
+let nombreProductoD = "Mate"
 let precioProductoD = 150
 let stockProductoD = 60
 
 
-let nombreProductoE = "florero"
+let nombreProductoE = "Tazavintage"
 let precioProductoE = 500
 let stockProductoE = 15
 
 let precioTotal = 0
 
-alert ( "Estos son nuestros productos: \n - taza\n - plato\n - maceta\n - buho\n - florero")
+let nombre = prompt("Ingrese su nombre: ")
+
+let catalogo = document.getElementById("catalogo")
+
+catalogo.innerText = "Bienvenido " + nombre 
+
+
+alert ( "Estos son nuestros productos: \n - Buho\n - Cuenco\n - Florero\n - Mate\n - Tazavintage")
   
 let cantidadCompra = prompt ( "que cantidad de productos distintos quiere comprar")
 
 for( let i = 0; i < cantidadCompra; i = i + 1){
 
-    let productoCompra = prompt (" Ingrese que producto quiere comprar : \n - taza\n - plato\n - maceta\n - buho\n - florero\n - ESC ")
+    let productoCompra = prompt (" Ingrese que producto quiere comprar : \n - Buho\n - Cuenco\n - Florero\n - Mate\n - Tazavintage\n - ESC ")
 
 
-    if(productoCompra.toLowerCase() =="taza"){
-        let cantidadProductoTaza = prompt ("ingrese que cantidad de " + nombreProductoA + " desea comprar:")  
-        precioTotal = cantidadProductoTaza * precioProductoA
+    if(productoCompra.toLowerCase() == "buho"){
+        let cantidadProductoBuho = prompt ("ingrese que cantidad de " + nombreProductoA + " desea comprar:")  
+        precioTotal = cantidadProductoBuho * precioProductoA
         
-        if (validarStock(cantidadProductoTaza, stockProductoA)){
-            precioTotal = cantidadProductoTaza * precioProductoA
-            stockProductoA = stockProductoA - cantidadProductoTaza
+        if (validarStock(cantidadProductoBuho, stockProductoA)){
+            precioTotal = cantidadProductoBuho * precioProductoA
+            stockProductoA = stockProductoA - cantidadProductoBuho
         } else {
             alert ( "No hay stock suficiente del producto")
         }
         console.log(stockProductoA)
 
-    } else if (productoCompra.toLowerCase() == "plato"){
-        let cantidadProductoPlato = prompt (" ingrese que cantidad de " + nombreProductoB + " desea comprar:")
-        precioTotal = cantidadProductoPlato * precioProductoB
+    } else if (productoCompra.toLowerCase() == "cuenco"){
+        let cantidadProductoCuenco = prompt (" ingrese que cantidad de " + nombreProductoB + " desea comprar:")
+        precioTotal = cantidadProductoCuenco * precioProductoB
         
         console.log(stockProductoB)
 
-    } else if(productoCompra == "maceta"){
-        let cantidadProductoMaceta = prompt("ingrese que cantidad de " + nombreProductoC + " desea comprar:")
-        precioTotal = cantidadProductoMaceta * precioProductoC
+    } else if(productoCompra.toLowerCase() == "florero"){
+        let cantidadProductoFlorero = prompt("ingrese que cantidad de " + nombreProductoC + " desea comprar:")
+        precioTotal = cantidadProductoFlorero * precioProductoC
 
         console.log(stockProductoC)
     
-    } else if(productoCompra == "buho"){
-        let cantidadProductoBuho = prompt(" ingrese que cantidad de " + nombreProductoD + " desea comprar:")
-        precioTotal = cantidadProductoBuho * precioProductoD
+    } else if(productoCompra.toLocaleLowerCase() == "mate"){
+        let cantidadProductoMate = prompt(" ingrese que cantidad de " + nombreProductoD + " desea comprar:")
+        precioTotal = cantidadProductoMate * precioProductoD
 
         console.log(stockProductoD)
 
 
-    } else if(productoCompra == "florero"){
-        let cantidadProductoFlorero = prompt(" ingrese que cantidad de " + nombreProductoE + " desea comprar:")
-        precioTotal = cantidadProductoFlorero * precioProductoD 
+    } else if(productoCompra.toLocaleLowerCase() == "tazavintage"){
+        let cantidadProductoTazavintage= prompt(" ingrese que cantidad de " + nombreProductoE + " desea comprar:")
+        precioTotal = cantidadProductoTazavintage * precioProductoD 
     }  
 
         console.log(stockProductoE)
