@@ -31,31 +31,35 @@ let num3 = num1 - num2
 console.log(num3)*/
 
 
+let productoA = {
+    nombre:"Buho",
+    precio:100,
+    stock:30
+}
 
+let productoB = {
+    nombre:"Cuenco",
+    precio:200,
+    stock:30
+}
 
-let nombreProductoA = "Buho"
-let precioProductoA = 100
-let stockProductoA = 30
+let productoC = {
+    nombre:"Florero",
+    precio:300,
+    stock:50
+}
 
+let productoD ={
+    nombre:"Mate",
+    precio:150,
+    stock:60
+}
+let productoE = {
+    nombre:"Tazavintage",
+    precio:500,
+    stock:15
+}
 
-let nombreProductoB = "Cuenco"
-let precioProductoB = 200 
-let stockProductoB = 30
-
-
-let nombreProductoC = "Florero"
-let precioProductoC = 300
-let stockProductoC =  50
-
-
-let nombreProductoD = "Mate"
-let precioProductoD = 150
-let stockProductoD = 60
-
-
-let nombreProductoE = "Tazavintage"
-let precioProductoE = 500
-let stockProductoE = 15
 
 let precioTotal = 0
 
@@ -76,49 +80,49 @@ for( let i = 0; i < cantidadCompra; i = i + 1){
 
 
     if(productoCompra.toLowerCase() == "buho"){
-        let cantidadProductoBuho = prompt ("ingrese que cantidad de " + nombreProductoA + " desea comprar:")  
-        precioTotal = cantidadProductoBuho * precioProductoA
+        let cantidadproductoA = prompt ("ingrese que cantidad de " + productoA.nombre + " desea comprar:")  
+        precioTotal = cantidadproductoA * productoA["precio"]
         
-        if (validarStock(cantidadProductoBuho, stockProductoA)){
-            precioTotal = cantidadProductoBuho * precioProductoA
-            stockProductoA = stockProductoA - cantidadProductoBuho
+        if (validarStock(cantidadproductoA, productoA.stock)){
+            precioTotal = cantidadproductoA * productoA["precio"]
+            productoA.stock = productoA.stock - cantidadproductoA
         } else {
             alert ( "No hay stock suficiente del producto")
         }
-        console.log(stockProductoA)
+        console.log(productoA.stock)
 
     } else if (productoCompra.toLowerCase() == "cuenco"){
-        let cantidadProductoCuenco = prompt (" ingrese que cantidad de " + nombreProductoB + " desea comprar:")
-        precioTotal = cantidadProductoCuenco * precioProductoB
+        let cantidadproductoB = prompt (" ingrese que cantidad de " + productoB.nombre + " desea comprar:")
+        precioTotal = cantidadproductoB * productoB["precio"]
         
-        console.log(stockProductoB)
+        console.log(productoB.stock)
 
     } else if(productoCompra.toLowerCase() == "florero"){
-        let cantidadProductoFlorero = prompt("ingrese que cantidad de " + nombreProductoC + " desea comprar:")
-        precioTotal = cantidadProductoFlorero * precioProductoC
+        let cantidadproductoC = prompt("ingrese que cantidad de " + productoC.nombre + " desea comprar:")
+        precioTotal = cantidadproductoC * productoC["precio"]
 
-        console.log(stockProductoC)
+        console.log(productoC.stock)
     
     } else if(productoCompra.toLocaleLowerCase() == "mate"){
-        let cantidadProductoMate = prompt(" ingrese que cantidad de " + nombreProductoD + " desea comprar:")
-        precioTotal = cantidadProductoMate * precioProductoD
+        let cantidadproductoD = prompt(" ingrese que cantidad de " + productoD.nombre + " desea comprar:")
+        precioTotal = cantidadproductoD * productoD["precio"]
 
-        console.log(stockProductoD)
+        console.log(productoD.stock)
 
 
     } else if(productoCompra.toLocaleLowerCase() == "tazavintage"){
-        let cantidadProductoTazavintage= prompt(" ingrese que cantidad de " + nombreProductoE + " desea comprar:")
-        precioTotal = cantidadProductoTazavintage * precioProductoD 
+        let cantidadproductoE= prompt(" ingrese que cantidad de " + productoE.nombre + " desea comprar:")
+        precioTotal = cantidadproductoE * productoE["precio"] 
     }  
 
-        console.log(stockProductoE)
+        console.log(productoE.stock)
     
 }
 
     alert ("El precio total es: " + "$" + precioTotal + " Gracias por su compra")
 
-function validarStock(cantidadProducto, stockProducto) {
-    if(cantidadProducto <= stockProducto) {
+function validarStock (stockProductoA,cantidadproductoA) {
+    if(cantidadproductoA <= productoA.stock) {
         return true
     }
         
