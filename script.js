@@ -31,7 +31,7 @@ let num3 = num1 - num2
 console.log(num3)*/
 
 
-let productoA = {
+/*let productoA = {
     nombre:"Buho",
     precio:100,
     stock:30
@@ -58,7 +58,29 @@ let productoE = {
     nombre:"Tazavintage",
     precio:500,
     stock:15
+}*/
+
+function Productos(nombre, precio, stock){
+    this.nombre = nombre;
+    this.precio = precio;
+    this.stock = stock || 0;
+    this.restarStock = function(cantidad){
+        this.stock += cantidad
+    }
+    this.sumarStock = function(cantidad){
+    this.stock += cantidad
+    }
+
 }
+
+let productoA = new Productos ("buho",100,30);
+let productoB = new Productos ("cuenco",200,30);
+let productoC = new Productos ("florero",300,50);
+let productoD = new Productos ("mate",150,60);
+let productoE = new Productos ("tazavintage",500,15);
+
+
+let listaProductos = [productoA, productoB, productoC, productoD, productoE]
 
 
 let precioTotal = 0
@@ -121,13 +143,13 @@ for( let i = 0; i < cantidadCompra; i = i + 1){
 
     alert ("El precio total es: " + "$" + precioTotal + " Gracias por su compra")
 
-function validarStock (stockProductoA,cantidadproductoA) {
+/*function validarStock (stockProductoA,cantidadproductoA) {
     if(cantidadproductoA <= productoA.stock) {
         return true
     }
         
     return false
-} 
+} */
 
 
 /*prompt( nombreProductoA + ":" + "$" + precioProductoA + " El stock es:" + stockProductoA + "  /  " + nombreProductoB + ":" + "$" + precioProductoB + " El stock es:" + stockProductoB + " / "
