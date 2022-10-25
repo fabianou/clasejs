@@ -92,7 +92,9 @@ let catalogo = document.getElementById("catalogo")
 catalogo.innerText = "Bienvenido " + nombre 
 
 
-alert ( "Estos son nuestros productos: \n - Buho\n - Cuenco\n - Florero\n - Mate\n - Tazavintage")
+catalogo.innerText = ( "Estos son nuestros productos: \n - Buho\n - Cuenco\n - Florero\n - Mate\n - Tazavintage")
+
+
   
 let cantidadCompra = prompt ( "que cantidad de productos distintos quiere comprar")
 
@@ -143,13 +145,13 @@ for( let i = 0; i < cantidadCompra; i = i + 1){
 
     alert ("El precio total es: " + "$" + precioTotal + " Gracias por su compra")
 
-/*function validarStock (stockProductoA,cantidadproductoA) {
+function validarStock (stockProductoA,cantidadproductoA) {
     if(cantidadproductoA <= productoA.stock) {
         return true
     }
         
     return false
-} */
+} 
 
 
 /*prompt( nombreProductoA + ":" + "$" + precioProductoA + " El stock es:" + stockProductoA + "  /  " + nombreProductoB + ":" + "$" + precioProductoB + " El stock es:" + stockProductoB + " / "
