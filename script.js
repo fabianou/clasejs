@@ -60,6 +60,14 @@ let productoE = {
     stock:15
 }*/
 
+
+Swal.fire({
+    title: 'Gracias',
+    text: 'Esta seguro de terminar con su compra?',
+    confirmButtonText: 'volver'
+  })
+
+
 function Productos(nombre, precio, stock){
     this.nombre = nombre;
     this.precio = precio;
@@ -152,6 +160,17 @@ function validarStock (stockProductoA,cantidadproductoA) {
         
     return false
 } 
+
+
+Swal.fire({
+    title: 'Gracias',
+    text: 'Esta seguro de terminar con su compra?',
+    confirmButtonText: 'volver'
+  })
+
+
+
+
 
 
 /*prompt( nombreProductoA + ":" + "$" + precioProductoA + " El stock es:" + stockProductoA + "  /  " + nombreProductoB + ":" + "$" + precioProductoB + " El stock es:" + stockProductoB + " / "
