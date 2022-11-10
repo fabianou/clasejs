@@ -1,0 +1,70 @@
+[
+    {
+        "id": 1,
+        "nombre": "Buho",
+        "descripcion": "Buho maceta de ceramica",
+        "precio": 100,
+        "stock": 30,
+        "imagen": "buho.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "Cuenco",
+        "descripcion": "Cuenco para velas",
+        "precio": 200,
+        "stock": 30,
+        "imagen": "cuenco.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "Florero" ,
+        "descripcion": "Florero mediano",
+        "precio": 300,
+        "stock": 50,
+        "imagen": "florero.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Mate" ,
+        "descripcion": "Mate chico",
+        "precio": 150,
+        "stock": 60,
+        "imagen": "mate.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "Taza Vintage",
+        "descripcion": "Taza Vintage Chica",
+        "precio": 500,
+        "stock": 15,
+        "imagen": "taza-vintage.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "Perritos",
+        "descripcion": "Perritos",
+        "precio": 150,
+        "stock": 25,
+        "imagen": "perritos.jpg"
+    },
+
+    {
+
+        "id": 7,
+        "nombre": "Tazon de campo",
+        "descripcion": "Tazon en gres",
+        "precio": 170,
+        "stock": 25,
+        "imagen": "Tazon-campo.jpg"
+    },
+
+    {
+        "id": 8,
+        "nombre": "Taza vera",
+        "descripcion": "Taza en gres, modelo vera",
+        "precio": 200,
+        "stock" : 50,
+        "imagen": "Taza-vera.jpg"
+
+    }
+]

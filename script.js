@@ -1,260 +1,148 @@
-/*let nombreProducto
-
-nombreProducto = "taza"
-
-const altura = 1.79
-
-let numeroA = 5
-let numeroB = 10
-
-let resultado = numeroA + numeroB
-
-console.log(resultado)
-
-let texto = "Hola"
-let texto2 = "Mundo"
-let espacio = " "
-
-let texto3 = texto + espacio + texto2
-
-console.log (texto3)
-
-let union = numeroA + texto
-
-console.log(union)
-
-let num1 = texto  
-let num2 = 3
-
-let num3 = num1 - num2 
-
-console.log(num3)*/
+Swal.fire('Bienvenido a tienda artesanal Vera,pulsa ok para comenzar tu compra')
 
 
-/*let productoA = {
-    nombre:"Buho",
-    precio:100,
-    stock:30
+const listaDeProductos = []
+
+let productosCarrito = []
+let cartList = document.getElementById('carrito')
+let catalogoProductos = document.getElementById('catalogo-productos')
+let totalValue = document.getElementById('total')
+
+let botonVaciar = document.getElementById('boton-vaciar')
+botonVaciar.addEventListener('click', vaciarCarrito)
+
+
+fetch("productos.json")
+    .then(respuesta => respuesta.json())
+    .then(listaProductos => 
+        listaProductos.forEach(producto => {
+            listaDeProductos.push(producto)
+
+            let card = document.createElement('div')
+            card.classList.add('card', 'col-sm-4')
+
+            let cardHeader = document.createElement('div')
+            cardHeader.classList.add('card-header')
+            cardHeader.innerText = `$${producto.precio}`
+
+            let imagen = document.createElement('img')
+            imagen.classList.add('card-img-top')
+            imagen.setAttribute('width', 300)
+            imagen.setAttribute('height', 300)
+            imagen.setAttribute('src', '/images/' + producto.imagen)
+
+            let cardBody = document.createElement("div")
+            cardBody.classList.add('card-body')
+
+            let cardTitle = document.createElement("h2")
+            cardTitle.classList.add('card-title')
+            cardTitle.innerText = producto.nombre
+
+            let cardDescription = document.createElement("p")
+            cardDescription.classList.add('card-text')
+            cardDescription.innerText = producto.descripcion
+
+            let cardButton = document.createElement("button")
+            cardButton.classList.add('btn', 'btn-primary')
+            cardButton.innerText = `Agregar al carrito de la tienda`
+            cardButton.setAttribute('mark', producto.id)
+            cardButton.setAttribute('nombre-producto', producto.nombre)
+            cardButton.addEventListener('click', agregarProductoAlCarrito)
+
+            cardBody.append(cardTitle)
+            cardBody.append(cardDescription)
+            cardBody.append(cardButton)
+
+            card.append(cardHeader)
+            card.append(imagen)
+            card.append(cardBody)
+
+            catalogoProductos.append(card)
+        }));
+
+cargarCarritoDeCompras()
+
+function cargarCarritoDeCompras(){
+
+    cartList.innerHTML = ''
+
+    let cartWithoutRepeatedElements = [...new Set(productosCarrito)]
+
+    cartWithoutRepeatedElements.forEach((itemId) => {
+        let item = listaDeProductos.filter((producto) => {
+            return producto.id === parseInt(itemId)
+        })
+        let quantity = productosCarrito.reduce((total, id) => {
+            return id === itemId ? total += 1 : total
+        }, 0)
+    
+
+        let linea = document.createElement('li')
+        linea.classList.add('list-group-item', 'text-right', 'mx-2')
+        linea.innerText = `${quantity} x ${item[0].nombre} - $${item[0].precio}`
+
+        let buttonDelete = document.createElement('button')
+        buttonDelete.classList.add('btn', 'btn-danger', 'mx-5')
+        buttonDelete.innerText = 'X'
+        buttonDelete.dataset.item = itemId
+        buttonDelete.addEventListener('click', eliminarProducto)
+
+        linea.append(buttonDelete)
+        cartList.append(linea)
+    })
+
+    totalValue.innerText = calcularPrecioTotal()
+}        
+
+function agregarProductoAlCarrito(event){
+    let id = event.target.getAttribute('mark')
+    let nombre = event.target.getAttribute('nombre-producto')
+    productosCarrito.push(id)
+    cargarCarritoDeCompras()
+
+    Toastify({
+        text: `Agregaste correctamente el producto a la tienda: ${nombre} al carrito`,
+        className: "info",
+        duration: 4000,
+        gravity: 'bottom'
+        }).showToast();
+}        
+
+function calcularPrecioTotal(){
+    return productosCarrito.reduce((total, itemId) => {
+        let item = listaDeProductos.filter((producto) => {
+            return producto.id === parseInt(itemId)
+        })
+
+        return total + item[0].precio
+    }, 0)
 }
 
-let productoB = {
-    nombre:"Cuenco",
-    precio:200,
-    stock:30
-}
-
-let productoC = {
-    nombre:"Florero",
-    precio:300,
-    stock:50
-}
-
-let productoD ={
-    nombre:"Mate",
-    precio:150,
-    stock:60
-}
-let productoE = {
-    nombre:"Tazavintage",
-    precio:500,
-    stock:15
-}*/
-
-
-Swal.fire({
-    title: 'Gracias',
-    text: 'Esta seguro de terminar con su compra?',
-    confirmButtonText: 'volver'
-  })
-
-
-function Productos(nombre, precio, stock){
-    this.nombre = nombre;
-    this.precio = precio;
-    this.stock = stock || 0;
-    this.restarStock = function(cantidad){
-        this.stock += cantidad
-    }
-    this.sumarStock = function(cantidad){
-    this.stock += cantidad
-    }
-
-}
-
-let productoA = new Productos ("buho",100,30);
-let productoB = new Productos ("cuenco",200,30);
-let productoC = new Productos ("florero",300,50);
-let productoD = new Productos ("mate",150,60);
-let productoE = new Productos ("tazavintage",500,15);
-
-
-let listaProductos = [productoA, productoB, productoC, productoD, productoE]
-
-
-let precioTotal = 0
-
-let nombre = prompt("Ingrese su nombre: ")
-
-let catalogo = document.getElementById("catalogo")
-
-catalogo.innerText = "Bienvenido " + nombre 
-
-
-catalogo.innerText = ( "Estos son nuestros productos: \n - Buho\n - Cuenco\n - Florero\n - Mate\n - Tazavintage")
-
-
-  
-let cantidadCompra = prompt ( "que cantidad de productos distintos quiere comprar")
-
-for( let i = 0; i < cantidadCompra; i = i + 1){
-
-    let productoCompra = prompt (" Ingrese que producto quiere comprar : \n - Buho\n - Cuenco\n - Florero\n - Mate\n - Tazavintage\n - ESC ")
-
-
-    if(productoCompra.toLowerCase() == "buho"){
-        let cantidadproductoA = prompt ("ingrese que cantidad de " + productoA.nombre + " desea comprar:")  
-        precioTotal = cantidadproductoA * productoA["precio"]
-        
-        if (validarStock(cantidadproductoA, productoA.stock)){
-            precioTotal = cantidadproductoA * productoA["precio"]
-            productoA.stock = productoA.stock - cantidadproductoA
-        } else {
-            alert ( "No hay stock suficiente del producto")
+function eliminarProducto(event){
+    Swal.fire({
+        title: 'Estas seguro de que queres eliminar este producto?',
+        showDenyButton: true,
+        confirmButtonText: 'Eliminar',
+        denyButtonText: `Cancelar`
+      }).then((result) => {
+        if (result.isConfirmed) {
+            let id = event.target.dataset.item
+            cart = cart.filter((cartId) => {
+                return cartId != id
+    })
+            rendercart()
+          Swal.fire('Eliminado', '', 'success')
+        } else if (result.isDenied) {
+          Swal.fire('No se elimino el producto', '', 'info')
         }
-        console.log(productoA.stock)
-
-    } else if (productoCompra.toLowerCase() == "cuenco"){
-        let cantidadproductoB = prompt (" ingrese que cantidad de " + productoB.nombre + " desea comprar:")
-        precioTotal = cantidadproductoB * productoB["precio"]
-        
-        console.log(productoB.stock)
-
-    } else if(productoCompra.toLowerCase() == "florero"){
-        let cantidadproductoC = prompt("ingrese que cantidad de " + productoC.nombre + " desea comprar:")
-        precioTotal = cantidadproductoC * productoC["precio"]
-
-        console.log(productoC.stock)
+      })
     
-    } else if(productoCompra.toLocaleLowerCase() == "mate"){
-        let cantidadproductoD = prompt(" ingrese que cantidad de " + productoD.nombre + " desea comprar:")
-        precioTotal = cantidadproductoD * productoD["precio"]
+   }
+   
 
-        console.log(productoD.stock)
+function vaciarCarrito(){
+    productosCarrito = []
+    cartList.innerHTML = ''
+    totalValue.innerText = 0
+}   
 
-
-    } else if(productoCompra.toLocaleLowerCase() == "tazavintage"){
-        let cantidadproductoE= prompt(" ingrese que cantidad de " + productoE.nombre + " desea comprar:")
-        precioTotal = cantidadproductoE * productoE["precio"] 
-    }  
-
-        console.log(productoE.stock)
-    
-}
-
-    alert ("El precio total es: " + "$" + precioTotal + " Gracias por su compra")
-
-function validarStock (stockProductoA,cantidadproductoA) {
-    if(cantidadproductoA <= productoA.stock) {
-        return true
-    }
-        
-    return false
-} 
-
-
-Swal.fire({
-    title: 'Gracias',
-    text: 'Esta seguro de terminar con su compra?',
-    confirmButtonText: 'volver'
-  })
-
-
-
-
-
-
-/*prompt( nombreProductoA + ":" + "$" + precioProductoA + " El stock es:" + stockProductoA + "  /  " + nombreProductoB + ":" + "$" + precioProductoB + " El stock es:" + stockProductoB + " / "
- + nombreProductoC + ":" + "$" + precioProductoC + " El stock es:" + stockProductoC +" / "+ 
- nombreProductoD + ":" + "$" + precioProductoD + "El stock es :" + stockProductoD + " / " + nombreProductoE + ":" + "$" + precioProductoE + "El stock es :" + stockProductoE)
-
-                                                                        
-
- alert( "Acepte si quiere comprar: " + nombreProductoA + " / " + nombreProductoB + " / " + nombreProductoC + " / " + nombreProductoD + " / " + nombreProductoE )
-
- let cantidadProductoA = prompt( "ingrese que cantidad de " + nombreProductoA + " desea comprar:")
-let cantidadProductoB = prompt ("ingrese que cantidad de " + nombreProductoB + " desea comprar:")
-let cantidadProductoC = prompt ("ingrese que cantidad de " + nombreProductoC + " desea comprar")
-let cantidadProductoD = prompt ("ingrese que cantidad de" + nombreProductoD + " desea comprar")
-let cantidadProductoE = prompt ("ingrese que cantidad de" + nombreProductoE + " desea comprar") 
-
-
-let precioTotalA = cantidadProductoA * precioProductoA
-let precioTotalB = cantidadProductoB * precioProductoB
-let precioTotalC = cantidadProductoC * precioProductoC
-let precioTotalD = cantidadProductoD * precioProductoD
-let precioTotalE = cantidadProductoE * precioProductoE
-
-
-let precioTotal = precioTotalA + precioTotalB 
-
-stockProductoA = stockProductoA - cantidadProductoA
-stockProductoB = stockProductoB - cantidadProductoB
-stockProductoC = stockProductoC - cantidadProductoC 
-
-alert ( "El precio total es : " + precioTotal)
-
-console.log("Ahora el stock de: " + nombreProductoA + " es: " + stockProductoA)
-console.log("Ahora el stock de: " + nombreProductoB + " es: " + stockProductoB)
-
-
-alert("Su compra se a realizado con exito")
-
-console.log(precioTotal)*/
-
-
-
-
-
-
-/*let verdadero = true 
-let esfalso = false 
-
-let numero = prompt("Ingrese un numero:")
-
-if(numero > 5 ){
-    console.log("el numero es mayor")
-}
-    console.log ("este es el final")
-*/
-
-/*let texto = prompt (" Ingrese SI para comprar \nIngrese NO para salir")
-
-if( texto == "SI"){
-
-    alert("Gracias por su respuesta")
-}
-else{
-alert("Gracias vuelve pronto")
-
-}
-console.log ("gracias vuelva pronto")
-
-*/
-
-/*for( let i = 1 ; i <= 10; i = i + 1){
-    alert( "El numero es el : " + i)
-
-console.log ("final")
-}*/
-
-/*let entrada = prompt ( " 1 - cuentas\n2 - cajero\n3 - contador\n ESC - Salir")
-
-
-
-while(entrada != "ESC"){
-alert("el usuario ingreso "+ entrada);
-
-entrada = prompt( "1 - cuentas\2 - cajero\3 - contador\ ESC - salir");
-
-console.log( "final")
-}*/
